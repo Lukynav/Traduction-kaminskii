@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "kaminsikii-project",
   "type": "commonjs",
   "version": "0.0.1",
   "scripts": {
@@ -10,18 +10,24 @@
     "astro": "astro",
     "prepare": "husky install",
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:write": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.2",
     "astro": "3.2.4",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0",
-    "prettier-plugin-tailwindcss": "^0.5.5",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "husky": "8.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.5",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
     "typescript": ">=4.7"
-  }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{css,scss}": "stylelint --fix"
+  },
+  "*.{html,json}": "prettier --write"
 }
