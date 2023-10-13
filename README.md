@@ -4,6 +4,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e0139828-457c-4d30-a3d7-deafbaf9e4f8/deploy-status)](https://app.netlify.com/sites/shimmering-beignet-5047c1/deploys)
 
+[![Continuos integration](https://github.com/Lukynav/Traduction-kaminskii/actions/workflows/CI_PIPELINES.yaml/badge.svg)](https://github.com/Lukynav/Traduction-kaminskii/actions/workflows/CI_PIPELINES.yaml)
+
 <!-- DESCRIPTION -->
 
 ## About the project
