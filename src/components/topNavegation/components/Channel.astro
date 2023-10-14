@@ -1,0 +1,20 @@
+---
+import type { ICommunicationChannel } from '@models/interfaces/communicationChannel';
+interface Props {
+    channelProps: ICommunicationChannel
+}
+const { channelProps }:Props  = Astro.props
+---
+<li class="relative before:content-[''] before:absolute before:block before:w-full before:h-[1px] 
+before:bottom-0 before:left-0 before:bg-black
+before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+before:transition before:ease-in-out before:duration-300">
+    <a class="flex gap-2 items-center p-1" href={channelProps.url}>
+        <img
+            class="w-3 h-3"
+            src=`/assets/icons/${channelProps.icon}.svg`
+            alt=`${channelProps.icon} icon`
+        >
+        <p class="text-xs">{channelProps.name}</p>
+    </a>
+</li>
