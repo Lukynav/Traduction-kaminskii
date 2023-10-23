@@ -7,7 +7,8 @@
       "@meta/*": ["src/meta/*"],
       "@pages/*": ["src/pages/*"],
       "@models/*": ["src/models/*"],
-      "@icons/*": ["src/icons/*"]
+      "@icons/*": ["src/icons/*"],
+      "@views/*": ["src/pages/views/*"]
     }
   }
 }
