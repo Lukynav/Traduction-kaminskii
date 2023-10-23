@@ -1,6 +1,7 @@
 ---
 import Globe from '@icons/Globe.astro';
-import Logo from '@icons/Logo.astro'
+import Logo from '@icons/Logo.astro';
+const NO_SELECTED_HOVER = "relative before:content-[''] before:absolute before:block before:w-full before:h-[1px] before:bottom-0 before:left-0 before:bg-black before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300 hover:text-black"
 ---
 
 <header class="w-screen p-6 bg-gradient-to-b from-sky-200 to-white">
@@ -9,9 +10,9 @@ import Logo from '@icons/Logo.astro'
     class="w-full flex items-center justify-end m-auto text-sm max-w-3xl"
   >
     <article class="flex gap-2 items-center">
-      <button class="underline font-semibold text-slate-800">Español</button>
+      <button class="underline font-semibold text-slate-800 ">Español</button>
       <p>-</p>
-      <button class="font-ligth text-slate-600">English</button>
+      <button class=`font-ligth text-slate-600 ${NO_SELECTED_HOVER}`>English</button>
       <Globe />
     </article>
   </section>
