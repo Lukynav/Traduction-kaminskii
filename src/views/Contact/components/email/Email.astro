@@ -1,0 +1,16 @@
+---
+import {EMAIL_CHANNEL} from '@models/consts/index'
+---
+<article class="flex items-center gap-6 text-slate-600 text-lg hover:text-slate-800">
+    <svg width="32" height="32" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_89_16)">
+          <path d="M4 6.55359C3.51875 6.55359 3.125 6.94734 3.125 7.42859V8.63718L12.5586 16.3809C13.6906 17.3106 15.3148 17.3106 16.4469 16.3809L25.875 8.63718V7.42859C25.875 6.94734 25.4813 6.55359 25 6.55359H4ZM3.125 12.0333V21.4286C3.125 21.9098 3.51875 22.3036 4 22.3036H25C25.4813 22.3036 25.875 21.9098 25.875 21.4286V12.0333L18.1094 18.4098C16.0094 20.1325 12.9852 20.1325 10.8906 18.4098L3.125 12.0333ZM0.5 7.42859C0.5 5.49812 2.06953 3.92859 4 3.92859H25C26.9305 3.92859 28.5 5.49812 28.5 7.42859V21.4286C28.5 23.3591 26.9305 24.9286 25 24.9286H4C2.06953 24.9286 0.5 23.3591 0.5 21.4286V7.42859Z" fill="black"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_89_16">
+            <rect width="28" height="28" fill="white" transform="translate(0.5 0.428589)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    <a href={EMAIL_CHANNEL.name}>{EMAIL_CHANNEL.name}</a>
+</article>

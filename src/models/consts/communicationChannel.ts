@@ -13,7 +13,7 @@ export const EMAIL_CHANNEL: ICommunicationChannel = {
 }
 
 export const WHATSAPP_CHANNEL: ICommunicationChannel = {
-  name: 'Phone',
+  name: '+1-555-555-5555',
   icon: 'whatsapp',
   url: 'tel:+1-555-555-5555'
 }
