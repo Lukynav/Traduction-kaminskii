@@ -1,119 +1,70 @@
-import { useForm, type FieldValues } from 'react-hook-form'
-import contactSchema from './schema/contactSchema'
+import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import InputText from './components/InputText/InputText'
+import TextAreaInput from './components/TextAreaInput/TextAreaInput'
+import type { IContactError } from '@models/interfaces/contactError'
+import { Toaster } from 'react-hot-toast'
+import FileTags from './components/fileTags/FileTags'
+import onSubmit from './functions/onSubmit'
+import Spinner from '@components/spinner/Spinner'
 
 const ContactForm = () => {
-  const { register, handleSubmit } = useForm()
-  const [errors, setErrors] = useState({ email: '', description: '' })
+  const { register, handleSubmit, reset } = useForm()
+  const [errors, setErrors] = useState<IContactError>({
+    email: '',
+    description: ''
+  })
   const [files, setFiles] = useState([])
+  const [fileName, setFileName] = useState([])
+  const [sending, setSending] = useState(false)
 
-  const onSubmit = async (data: FieldValues) => {
-    try {
-      await contactSchema.validate(data, { abortEarly: false })
-    } catch (error: any) {
-      let errorState = { email: '', description: '' }
-      error.inner.map((err: any) => {
-        if (errorState[err.path] === '') {
-          errorState[err.path] = err.message
-        }
-      })
-
-      setErrors(errorState)
-    }
+  const onUploadFile = () => {
+    const fileInput = document.getElementById('fileInput')
+    if (fileInput === null) return
+    fileInput.click()
+    fileInput.addEventListener('change', () => {
+      // @ts-ignore
+      const files = fileInput.files
+      setFiles(files)
+      const fileNameCopy = []
+      for (let i = 0; i < files.length; i++) {
+        fileNameCopy.push(files[i].name)
+      }
+      //@ts-ignore
+      setFileName(fileNameCopy)
+    })
   }
-
-  const onUploadFile = () => {}
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit((data) =>
+        onSubmit(data, setErrors, setFileName, reset, files, setSending)
+      )}
       className="max-w-3xl m-auto -mt-8 grid gap-2 p-4"
+      id="contact-form"
     >
-      <label
-        className={
-          errors.description
-            ? 'flex flex-col text-red-800 mt-4'
-            : 'flex flex-col text-slate-500 mt-4 gap-2'
-        }
-      >
-        Correo electrónico
-        <input
-          className={
-            errors.email
-              ? 'bg-red-50 w-full border-b-0 border-2 border-red-800 rounded-t-lg p-2 text-black resize-none mt-2'
-              : 'bg-white w-full border-2 border-slate-300 rounded-lg p-2 text-black resize-none focus:border-none'
-          }
-          type="text"
-          {...register('email')}
-        />
-        {errors.email !== '' && (
-          <p className="flex gap-2 items-center text-white p-2 font-light bg-red-800 border-2 border-red-800 rounded-b-lg border-t-0 -mt-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-              />
-            </svg>
-            {errors.email}
-          </p>
-        )}
-      </label>
+      <Toaster />
+      <InputText register={register} errors={errors} />
+      <TextAreaInput register={register} errors={errors} />
+      <FileTags
+        fileName={fileName}
+        setFileName={setFileName}
+        setFiles={files}
+        files={files}
+      />
 
-      <label
-        className={
-          errors.description
-            ? 'flex flex-col text-red-800 mt-4'
-            : 'flex flex-col text-slate-500 mt-4 gap-2'
-        }
-      >
-        Cuéntame. ¿Cómo podemos ayudarte?
-        <textarea
-          className={
-            errors.description
-              ? 'bg-red-50 w-full border-b-0 border-2 border-red-800 rounded-t-lg p-2 text-black h-44 resize-none mt-2'
-              : 'bg-white w-full border-2 border-slate-300 rounded-lg p-2 text-black h-44 resize-none'
-          }
-          {...register('description')}
-        />
-        {errors.description !== '' && (
-          <p className="flex gap-2 items-center text-white p-2 font-light bg-red-800 border-2 border-red-800 rounded-b-lg border-t-0 -mt-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-              />
-            </svg>
-            {errors.description}
-          </p>
-        )}
-      </label>
-
-      {/* <ul className="flex gap-2">
-                <li className="bg-slate-200 p-2 rounded-xl">Archivo1.js</li>
-                <li className="bg-slate-200 p-2 rounded-xl">Archivo1.js</li>
-                <li className="bg-slate-200 p-2 rounded-xl">Archivo1.js</li>
-            </ul> */}
-
+      <input
+        type="file"
+        id="fileInput"
+        accept=".docx, .pdf, .xlsx"
+        multiple
+        className="hidden"
+      />
       <footer className="mt-5 flex justify-end gap-6">
         <button
           type="button"
           className="flex gap-2 md:gap-4 text-md md:text-lg items-center py-2 md:py-4 px-2 md:px-6 hover:bg-slate-50 rounded-xl"
+          onClick={onUploadFile}
         >
           <svg
             width="20"
@@ -130,12 +81,19 @@ const ContactForm = () => {
           Adjuntar archivo
         </button>
 
-        <button
-          type="submit"
-          className="flex gap-4 text-lg items-center bg-sky-100 py-1 md:py-4 px-6 md:px-16 shadow-sm shadow-slate-400 hover:shadow-md hover:shadow-slate-500 hover:bg-sky-200 rounded-xl"
-        >
-          Enviar
-        </button>
+        {sending ? (
+          <button className="flex gap-4 text-lg items-center bg-slate-300 py-1 md:py-4 px-2 md:px-8 rounded-xl">
+            <Spinner />
+            Enviando...
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="flex gap-4 text-lg items-center bg-sky-100 py-1 md:py-4 px-6 md:px-16 shadow-sm shadow-slate-400 hover:shadow-md hover:shadow-slate-500 hover:bg-sky-200 rounded-xl"
+          >
+            Enviar
+          </button>
+        )}
       </footer>
     </form>
   )

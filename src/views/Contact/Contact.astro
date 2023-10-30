@@ -3,7 +3,7 @@ import Title from "@components/title/Title.astro";
 import Email from "./components/email/Email.astro";
 import Phone from "./components/phone/Phone.astro"
 import Whatsapp from "./components/whatsapp/Whatsapp.astro"
-import Contact from "./components/contactForm/Contact.tsx"
+import ContactFom from "./components/contactForm/Contact.tsx"
 ---
 <Title title="Pongamonos en contacto" />
 
@@ -16,4 +16,4 @@ import Contact from "./components/contactForm/Contact.tsx"
 
 <Title title="Consultas" />
 
-<Contact client:only="react" />
+<ContactFom client:only="react" />
