@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import InputText from './components/InputText/InputText'
 import TextAreaInput from './components/TextAreaInput/TextAreaInput'
@@ -7,6 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import FileTags from './components/fileTags/FileTags'
 import onSubmit from './functions/onSubmit'
 import Spinner from '@components/spinner/Spinner'
+import { useForm } from 'react-hook-form'
 
 const ContactForm = () => {
   const { register, handleSubmit, reset } = useForm()
