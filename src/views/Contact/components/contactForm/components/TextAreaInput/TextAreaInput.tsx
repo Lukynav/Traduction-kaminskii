@@ -18,7 +18,7 @@ const TextAreaInput = (props: InputTextAreaProps) => {
     >
       {languaje === 'english'
         ? 'How can we help you?'
-        : 'Cuéntame. ¿Cómo podemos ayudarte?'}
+        : 'Contame. ¿Cómo podemos ayudarte?'}
       <textarea
         className={
           errors.description

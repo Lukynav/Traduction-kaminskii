@@ -9,7 +9,7 @@ function CommunicationChannelItem({
   languaje: 'spanish' | 'english'
 }) {
   return (
-    <li
+    <article
       className="relative before:content-[''] before:absolute before:block before:w-full before:h-[1px] 
       before:bottom-0 before:left-0 before:bg-black
       before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
@@ -22,6 +22,8 @@ function CommunicationChannelItem({
         {channelProps.icon === 'phone' && (
           <svg
             className="w-4 h-4 text-slate-600"
+            width={8}
+            height={8}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -39,6 +41,8 @@ function CommunicationChannelItem({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
+            width={8}
+            height={8}
           >
             <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
             <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
@@ -50,6 +54,8 @@ function CommunicationChannelItem({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
+            width={8}
+            height={8}
           >
             <path
               fillRule="evenodd"
@@ -64,7 +70,7 @@ function CommunicationChannelItem({
             : channelProps.nameSpanish}
         </p>
       </a>
-    </li>
+    </article>
   )
 }
 
