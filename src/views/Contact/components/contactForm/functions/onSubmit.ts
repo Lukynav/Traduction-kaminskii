@@ -15,7 +15,8 @@ const onSubmit = async (
   setFileName: Dispatch<SetStateAction<never[]>>,
   reset: any,
   files: File[],
-  setSending: Dispatch<SetStateAction<boolean>>
+  setSending: Dispatch<SetStateAction<boolean>>,
+  languaje: string
 ) => {
   setSending(true)
   try {
@@ -23,7 +24,7 @@ const onSubmit = async (
     setErrors({ email: '', description: '' })
 
     // Validate data with the contactSchema
-    await contactSchema.validate(data, { abortEarly: false })
+    await contactSchema(languaje).validate(data, { abortEarly: false })
 
     // Try to the file to an url
     const urls = await fileConvertToString(files)
@@ -43,7 +44,11 @@ const onSubmit = async (
     )
 
     // Show success message
-    toast.success('Correo enviado exitosamente!')
+    toast.success(
+      languaje === 'english'
+        ? 'Email sent successfully!'
+        : 'Correo enviado exitosamente!'
+    )
 
     // Reset the form
     setFileName([])
@@ -57,7 +62,11 @@ const onSubmit = async (
 
     // Check if the error is not from the yup validation
     if (error.inner === undefined)
-      return toast.error('Ups! No pudimos enviar el correo.')
+      return toast.error(
+        languaje === 'english'
+          ? "Oops! We couldn't send the email."
+          : 'Ups! No pudimos enviar el correo.'
+      )
 
     // Set the errors in the errorState with the yup validation
     error.inner.map((err: IValidation) => {

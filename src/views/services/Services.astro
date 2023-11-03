@@ -2,17 +2,20 @@
 import Title from "@components/title/Title.astro";
 import Card from "./card/Card.astro"
 import { SERVICES } from "@models/consts/index"
+const {languaje} = Astro.props
 ---
-<Title title="Servicios de traducción" />
+<Title title={languaje === "english" ? "Translation services" : "Servicios de traducción"} />
 <section class="max-w-3xl m-auto grid grid-cols-1 p-4 md:p-2 md:grid-cols-2 gap-4">
     {SERVICES.map(service => {
-        return <Card {...service} />
+        return <Card {...service} languaje={languaje} />
     })}
 </section>
 <section class="w-full p-4 flex gap-4 items-center sm:justify-center my-8">
-    <img class="w-12 h-12 rounded-xl" src="/images/traduction-school.png" alt="Logo escuela de traductores de la ciudad de buenos aires" title="Logo del colegio de traductores de la ciudad de buenos aires" />
-    <div class="">
-        <strong>Colegio de traductores publicos</strong>
-        <p class="text-slate-600">de la Ciudad de Buenos Aires</p>
-    </div>
+    <a class="flex gap-4" href="https://www.traductores.org.ar/" target="_blank">
+        <img class="w-12 h-12 rounded-xl" src="/images/traduction-school.png" alt="Logo escuela de traductores de la ciudad de buenos aires" title="Logo del colegio de traductores de la ciudad de buenos aires" />
+        <div class="">
+            <strong>{languaje === "english" ? "College of Public Translators" : "Colegio de traductores publicos"}</strong>
+            <p class="text-slate-600">{languaje === "english" ? "of the City of Buenos Aires" : "de la Ciudad de Buenos Aires"}</p>
+        </div>
+    </a>
 </section>

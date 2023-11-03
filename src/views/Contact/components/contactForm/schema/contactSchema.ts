@@ -1,12 +1,32 @@
 import { ERROR_MESSAGES } from '@models/consts/errorMessages'
-import { mixed, object, string } from 'yup'
+import { object, string } from 'yup'
 
-const contactSchema = object({
-  email: string().email(ERROR_MESSAGES.email).required(ERROR_MESSAGES.required),
+const contactSchema = (languaje: string) =>
+  object({
+    email: string()
+      .email(
+        languaje === 'english'
+          ? ERROR_MESSAGES.emailEnglish
+          : ERROR_MESSAGES.email
+      )
+      .required(
+        languaje === 'english'
+          ? ERROR_MESSAGES.requiredEnglish
+          : ERROR_MESSAGES.required
+      ),
 
-  description: string()
-    .required(ERROR_MESSAGES.required)
-    .min(10, ERROR_MESSAGES.descriptionSize)
-})
+    description: string()
+      .required(
+        languaje === 'english'
+          ? ERROR_MESSAGES.requiredEnglish
+          : ERROR_MESSAGES.required
+      )
+      .min(
+        10,
+        languaje === 'english'
+          ? ERROR_MESSAGES.descriptionSizeEnglish
+          : ERROR_MESSAGES.descriptionSize
+      )
+  })
 
 export default contactSchema

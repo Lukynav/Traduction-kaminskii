@@ -2,6 +2,7 @@
 import Globe from '@icons/Globe.astro';
 import Logo from '@icons/Logo.astro';
 const NO_SELECTED_HOVER = "relative before:content-[''] before:absolute before:block before:w-full before:h-[1px] before:bottom-0 before:left-0 before:bg-black before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300 hover:text-black"
+const {languaje} = Astro.props
 ---
 
 <header class="w-screen p-6 bg-gradient-to-b from-sky-200 to-white">
@@ -10,9 +11,10 @@ const NO_SELECTED_HOVER = "relative before:content-[''] before:absolute before:b
     class="w-full flex items-center justify-end m-auto text-sm max-w-3xl"
   >
     <article class="flex gap-2 items-center">
-      <button class="underline font-semibold text-slate-800 ">Español</button>
+      <!--@ts-ignore -->
+      <a class=`${languaje !== "english" ? "underline" : NO_SELECTED_HOVER} font-semibold text-slate-800 ` type="button" href="/">Español</a>
       <p>-</p>
-      <button class=`font-ligth text-slate-600 ${NO_SELECTED_HOVER}`>English</button>
+      <a class=`${languaje === "english" ? "underline" : NO_SELECTED_HOVER} font-semibold text-slate-800 `  type="button" href="/english">English</a>
       <Globe />
     </article>
   </section>
@@ -20,14 +22,14 @@ const NO_SELECTED_HOVER = "relative before:content-[''] before:absolute before:b
   <!-- HEADER SECTION -->
   <section class="flex flex-col-reverse xs:flex-row xs:mt-10 xs:items-center xs:justify-between gap-8 max-w-3xl m-auto">
     <article class="-mt-10 xs:mt-0">
-      <p class="text-md xs:text-sm sm:text-lg md:text-xl text-slate-600 font-light">Traducciones</p>
+      <p class="text-md xs:text-sm sm:text-lg md:text-xl text-slate-600 font-light">{languaje === "english"?"Translations":"Traducciones"}</p>
       <h1 class="text-4xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">Sofía Kaminskii</h1>
       <div class="mt-3 xs:mt-1 md:mt-3 lg:mt-5">
         <strong class="text-md xs:text-sm sm:text-lg md:text-xl font-semibold"
-          >Traductora Pública de inglés</strong
+          >{languaje === "english"?"English < > Spanish Certified Translator":"Traductora Pública de inglés"}</strong
         >
         <p class="font-thin text-md sm:text-lg">
-          Matriculada CTPCBA
+          {languaje === "english" ? "Registered CTPCBA":"Matriculada CTPCBA"}
         </p>
       </div>
     </article>

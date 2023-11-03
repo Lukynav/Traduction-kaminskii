@@ -1,5 +1,6 @@
 export interface ICommunicationChannel {
-  name: string
+  nameSpanish: string
+  nameEnglish: string
   icon: string
   url: string | '#'
 }

@@ -1,5 +1,5 @@
 ---
-const {title, description, icon} = Astro.props
+const {title, titleEnglish, description, descriptionEnglish, icon, languaje} = Astro.props
 ---
 <article class="border-slate-300 rounded-xl border-2 py-12 px-6 flex flex-col items-center hover:shadow-lg hover:bg-slate-50">
     {icon === "personal-documents" && 
@@ -37,6 +37,6 @@ const {title, description, icon} = Astro.props
         </svg>
     }
       
-    <strong class="text-lg font-black mt-6">{title}</strong>
-    <p class="mt-2 text-sm font-light text-slate-600 text-center">{description}</p>
+    <strong class="text-lg font-black mt-6 text-center">{languaje === "english" ? titleEnglish : title}</strong>
+    <p class="mt-2 text-sm font-light text-slate-600 text-center">{languaje === "english" ? descriptionEnglish : description}</p>
 </article>
