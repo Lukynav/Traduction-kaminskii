@@ -1,6 +1,5 @@
 import type { ICommunicationChannel } from '@models/interfaces'
-import React, { useEffect, useState } from 'react'
-import { useLangauje } from 'src/zustand'
+import React from 'react'
 
 function CommunicationChannelItem({
   channelProps,
