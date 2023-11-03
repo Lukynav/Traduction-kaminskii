@@ -3,10 +3,11 @@ import type { IContactError } from '@models/interfaces/contactError'
 interface InputTextAreaProps {
   errors: IContactError
   register: any
+  languaje: string
 }
 
 const TextAreaInput = (props: InputTextAreaProps) => {
-  const { errors, register } = props
+  const { errors, register, languaje } = props
   return (
     <label
       className={
@@ -15,7 +16,9 @@ const TextAreaInput = (props: InputTextAreaProps) => {
           : 'flex flex-col text-slate-500 mt-4 gap-2'
       }
     >
-      Cuentame. ¿Cómo podemos ayudarte?
+      {languaje === 'english'
+        ? 'How can we help you?'
+        : 'Cuéntame. ¿Cómo podemos ayudarte?'}
       <textarea
         className={
           errors.description

@@ -2,10 +2,11 @@
 import Title from "@components/title/Title.astro";
 import Card from "./card/Card.astro"
 import { PRINCIPLES } from "@models/consts/index"
+const {languaje} = Astro.props
 ---
-<Title title="Principios y valores" />
+<Title title={languaje === "english" ? "Principles and values" : "Principios y valores"} />
 <section class="max-w-3xl m-auto grid grid-cols-1 p-4 md:p-2 md:grid-cols-2 gap-4">
     {PRINCIPLES.map(principe => {
-        return <Card {...principe} />
+        return <Card {...principe} languaje="english" />
     })}
 </section>

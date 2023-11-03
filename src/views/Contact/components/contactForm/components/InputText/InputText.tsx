@@ -3,10 +3,11 @@ import type { IContactError } from '@models/interfaces/contactError'
 interface InputTextProps {
   errors: IContactError
   register: any
+  languaje: string
 }
 
 const InputText = (props: InputTextProps) => {
-  const { errors, register } = props
+  const { errors, register, languaje } = props
   return (
     <label
       className={
@@ -15,7 +16,7 @@ const InputText = (props: InputTextProps) => {
           : 'flex flex-col text-slate-500 mt-4 gap-2'
       }
     >
-      Correo electrónico
+      {languaje === 'english' ? 'Email address' : 'Correo electrónico'}
       <input
         className={
           errors.email

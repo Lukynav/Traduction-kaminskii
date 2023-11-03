@@ -8,7 +8,8 @@
       "@pages/*": ["src/pages/*"],
       "@models/*": ["src/models/*"],
       "@icons/*": ["src/icons/*"],
-      "@views/*": ["src/views/*"]
+      "@views/*": ["src/views/*"],
+      "@cookies/*": ["src/cookies/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

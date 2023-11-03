@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import InputText from './components/InputText/InputText'
 import TextAreaInput from './components/TextAreaInput/TextAreaInput'
@@ -7,8 +6,9 @@ import { Toaster } from 'react-hot-toast'
 import FileTags from './components/fileTags/FileTags'
 import onSubmit from './functions/onSubmit'
 import Spinner from '@components/spinner/Spinner'
+import { useForm } from 'react-hook-form'
 
-const ContactForm = () => {
+const ContactForm = ({ languaje }: { languaje: string }) => {
   const { register, handleSubmit, reset } = useForm()
   const [errors, setErrors] = useState<IContactError>({
     email: '',
@@ -34,18 +34,25 @@ const ContactForm = () => {
       setFileName(fileNameCopy)
     })
   }
-
   return (
     <form
       onSubmit={handleSubmit((data) =>
-        onSubmit(data, setErrors, setFileName, reset, files, setSending)
+        onSubmit(
+          data,
+          setErrors,
+          setFileName,
+          reset,
+          files,
+          setSending,
+          languaje
+        )
       )}
       className="max-w-3xl m-auto -mt-8 grid gap-2 p-4"
       id="contact-form"
     >
       <Toaster />
-      <InputText register={register} errors={errors} />
-      <TextAreaInput register={register} errors={errors} />
+      <InputText languaje={languaje} register={register} errors={errors} />
+      <TextAreaInput languaje={languaje} register={register} errors={errors} />
       <FileTags
         fileName={fileName}
         setFileName={setFileName}
@@ -78,20 +85,20 @@ const ContactForm = () => {
               fill="black"
             />
           </svg>
-          Adjuntar archivo
+          {languaje === 'english' ? 'Attach file' : 'Adjuntar archivo'}
         </button>
 
         {sending ? (
           <button className="flex gap-4 text-lg items-center bg-slate-300 py-1 md:py-4 px-2 md:px-8 rounded-xl">
             <Spinner />
-            Enviando...
+            {languaje === 'english' ? 'Sending...' : 'Enviando...'}
           </button>
         ) : (
           <button
             type="submit"
             className="flex gap-4 text-lg items-center bg-sky-100 py-1 md:py-4 px-6 md:px-16 shadow-sm shadow-slate-400 hover:shadow-md hover:shadow-slate-500 hover:bg-sky-200 rounded-xl"
           >
-            Enviar
+            {languaje === 'english' ? 'Send' : 'Enviar'}
           </button>
         )}
       </footer>
