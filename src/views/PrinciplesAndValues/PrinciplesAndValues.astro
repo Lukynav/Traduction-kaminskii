@@ -7,6 +7,6 @@ const {languaje} = Astro.props
 <Title title={languaje === "english" ? "Principles and values" : "Principios y valores"} />
 <section class="max-w-3xl m-auto grid grid-cols-1 p-4 md:p-2 md:grid-cols-2 gap-4">
     {PRINCIPLES.map(principe => {
-        return <Card {...principe} languaje="english" />
+        return <Card {...principe} languaje={languaje} />
     })}
 </section>
