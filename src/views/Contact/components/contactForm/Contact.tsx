@@ -50,6 +50,7 @@ const ContactForm = ({ languaje }: { languaje: string }) => {
       className="max-w-3xl m-auto -mt-8 grid gap-2 p-4"
       id="contact-form"
     >
+      {/* @ts-ignore */}
       <Toaster />
       <InputText languaje={languaje} register={register} errors={errors} />
       <TextAreaInput languaje={languaje} register={register} errors={errors} />
