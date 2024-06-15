@@ -33,12 +33,13 @@ const {languaje} = Astro.props
           </>
       }
       <div class="mt-3 xs:mt-1 md:mt-3 lg:mt-5">
-        <strong class="text-md xs:text-sm sm:text-lg md:text-xl font-semibold"
-          >{languaje === "english"?"English < > Spanish Certified Translator":"Traductora Pública de inglés"}</strong
-        >
+        <strong class="text-md xs:text-sm sm:text-lg md:text-2xl font-semibold">{languaje === "english"?"Certified Translator":"Traductora Pública de inglés"}</strong>
         <p class="font-thin text-md sm:text-lg">
           {languaje === "english" ? "Registered CTPCBA":"Matriculada CTPCBA"}
         </p>
+        <!-- <p class="font-thin text-sm sm:text-sm">
+          {languaje === "english" ? "Registered CTPCBA":"Español ⇔ Inglés || Inglés ⇔ Español"}
+        </p> -->
       </div>
     </article>
     <Logo />

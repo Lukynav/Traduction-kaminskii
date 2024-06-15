@@ -13,15 +13,15 @@ function CommunicationChannelItem({
       className="relative before:content-[''] before:absolute before:block before:w-full before:h-[1px] 
       before:bottom-0 before:left-0 before:bg-black
       before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-      before:transition before:ease-in-out before:duration-300"
+      before:transition before:ease-in-out before:duration-300 text-black font-medium"
     >
       <a
-        className="flex gap-2 items-center p-1 text-slate-600"
+        className="flex gap-2 items-center p-"
         href={channelProps.url}
       >
         {channelProps.icon === 'phone' && (
           <svg
-            className="w-4 h-4 text-slate-600"
+            className="w-4 h-4 text-black"
             width={8}
             height={8}
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ function CommunicationChannelItem({
         )}
         {channelProps.icon === 'email' && (
           <svg
-            className="w-4 h-4 text-slate-600"
+            className="w-4 h-4 text-black"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -50,7 +50,7 @@ function CommunicationChannelItem({
         )}
         {channelProps.icon === 'clock' && (
           <svg
-            className="w-4 h-4 text-slate-600"
+            className="w-4 h-4 text-black"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
