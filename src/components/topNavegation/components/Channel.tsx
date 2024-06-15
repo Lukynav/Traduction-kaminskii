@@ -15,10 +15,7 @@ function CommunicationChannelItem({
       before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
       before:transition before:ease-in-out before:duration-300 text-black font-medium"
     >
-      <a
-        className="flex gap-2 items-center p-"
-        href={channelProps.url}
-      >
+      <a className="flex gap-2 items-center p-" href={channelProps.url}>
         {channelProps.icon === 'phone' && (
           <svg
             className="w-4 h-4 text-black"
