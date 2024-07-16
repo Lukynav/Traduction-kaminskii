@@ -1,48 +1,60 @@
 ---
-const TITLE: string = "Traduccion | Sofia Kaminskii"
-const DESCRIPTION: string = "Servicios de traducción altamente especializados en documentos técnicos y patentes. Mi enfoque se centra en garantizar precisión y claridad en la transmisión de información técnica y legal."
-const FAVICON: string = "/favicon.svg"
-const SHORT_DESCRIPTION: string = "Servicios de traducción de alta calidad para negocios, documentos técnicos y legales."
-const SOCIAL_MEDIA_IMAGE: string = "https://static.wixstatic.com/media/5aebae_f69c3e863f5c44b8a242945a84f73261~mv2.jpeg/v1/fill/w_355,h_201,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/logosk-transformed.jpeg"
-const SOCIAL_MEDIA_IMAGE_ALT: string = "Servicio de traducción"
-const MAIN_COLOR: string = "#fff"
-const KEYWORDS: string[] = ["Traducción","Traductor"]
-const AUTHOR: string = "Sofia Kaminskii"
-const COPYRIGHT: string = "Sofia Kaminskii"
+const TITLE: string =
+  'Traductor Publico | Sofia Kaminskii | Servicios de Traduccion'
+const DESCRIPTION: string =
+  'Documentos personales, legales, comerciales y técnicos.'
+const FAVICON: string = '/images/phrase-bg.png'
+const SHORT_DESCRIPTION: string =
+  'Servicios de traducción de alta calidad para negocios, documentos técnicos y legales.'
+const SOCIAL_MEDIA_IMAGE: string =
+  'https://static.wixstatic.com/media/5aebae_f69c3e863f5c44b8a242945a84f73261~mv2.jpeg/v1/fill/w_355,h_201,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/logosk-transformed.jpeg'
+const SOCIAL_MEDIA_IMAGE_ALT: string = 'Servicio de traducción'
+const MAIN_COLOR: string = '#fff'
+const KEYWORDS: string[] = ['Traducción', 'Traductor']
+const AUTHOR: string = 'Sofia Kaminskii'
+const COPYRIGHT: string = 'Sofia Kaminskii'
 
 // DO NOT EDIT BELOW THIS LINE
-const KEYWORDS_STRING: string = KEYWORDS.join(", ")
+const KEYWORDS_STRING: string = KEYWORDS.join(', ')
 ---
 
 <meta charset="utf-8" />
 
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WG2BK7ZS');</script>
-    <!-- End Google Tag Manager -->
+
+<script>
+  ;(function (w, d, s, l, i) {
+    w[l] = w[l] || []
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : ''
+    j.async = true
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+    f.parentNode.insertBefore(j, f)
+  })(window, document, 'script', 'dataLayer', 'GTM-WG2BK7ZS')
+</script>
+<!-- End Google Tag Manager -->
 
 <!-- GOOGLE META -->
-<meta name="description" content={DESCRIPTION}/>
+<meta name="description" content={DESCRIPTION} />
 <title>{TITLE}</title>
-<meta name="robots" content="index, follow"/>
+<meta name="robots" content="index, follow" />
 
 <!-- LINKS -->
 <link rel="canonical" href="https://www.traductorakaminskii.com.ar/" />
 
 <!-- OPEN GRAPH (SOCIAL MEDIA) -->
-<meta property="og:title" content={TITLE}/>
-<meta property="og:description" content={SHORT_DESCRIPTION}/>
-<meta property="og:image" content={SOCIAL_MEDIA_IMAGE}/>
-<meta property="og:image:alt" content={SOCIAL_MEDIA_IMAGE_ALT}/>
+<meta property="og:title" content={TITLE} />
+<meta property="og:description" content={SHORT_DESCRIPTION} />
+<meta property="og:image" content={SOCIAL_MEDIA_IMAGE} />
+<meta property="og:image:alt" content={SOCIAL_MEDIA_IMAGE_ALT} />
 
 <!-- SAFARI -->
-<meta name="theme:color" content={MAIN_COLOR}/>
+<meta name="theme:color" content={MAIN_COLOR} />
 
 <!-- KEYWORDS -->
-<meta name="keywords" content={KEYWORDS_STRING}/>
+<meta name="keywords" content={KEYWORDS_STRING} />
 
 <!-- AUTHOR AND COPYRIGHT -->
 <meta name="author" content={AUTHOR} />
@@ -51,4 +63,4 @@ const KEYWORDS_STRING: string = KEYWORDS.join(", ")
 <!-- OTHER -->
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/svg+xml" href={FAVICON} />
-<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache" />

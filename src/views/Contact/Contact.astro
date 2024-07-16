@@ -1,27 +1,40 @@
 ---
-import Title from "@components/title/Title.astro";
-import Email from "./components/email/Email.astro";
-import Phone from "./components/phone/Phone.astro"
-import Whatsapp from "./components/whatsapp/Whatsapp.astro"
-import ContactFom from "./components/contactForm/Contact.tsx"
-const {languaje} = Astro.props
+import Title from '@components/title/Title.astro'
+import Email from './components/email/Email.astro'
+import Phone from './components/phone/Phone.astro'
+import Whatsapp from './components/whatsapp/Whatsapp.astro'
+import ContactFom from './components/contactForm/Contact.tsx'
+const { languaje } = Astro.props
 ---
-<Title title={languaje === "english" ? "Let´s get in touch" : "Pongámonos en contacto"} />
+
+<Title
+  title={languaje === 'english'
+    ? 'Let´s get in touch'
+    : 'Pongámonos en contacto'}
+/>
 <!-- Contact box -->
-<section class="max-w-3xl m-4 lg:m-auto mt-6 flex gap-6 flex-col py-8 px-6 md:px-12 rounded-xl bg-sky-100 shadow-[inset_0px_4px_4px] shadow-slate-300 hover:shadow-slate-300 hover:shadow-[inset_2px_6px_6px]">
-    <Whatsapp />
-    <Email />
-    <Phone />
+<section
+  class="max-w-3xl m-4 lg:m-auto mt-6 flex gap-6 flex-col py-8 px-6 md:px-12 rounded-xl bg-sky-100 shadow-[inset_0px_4px_4px] shadow-slate-300 hover:shadow-slate-300 hover:shadow-[inset_2px_6px_6px]"
+>
+  <Whatsapp />
+  <Email />
+  <Phone />
 </section>
 
-<Title title={languaje === "english" ? "Queries:" : "Consultas:"} />
+<Title title={languaje === 'english' ? 'Queries:' : 'Consultas:'} />
 
 <header class="w-full pl-4 flex items-center gap-2 max-w-3xl m-auto -mt-4 mb-4">
-    {languaje ? (
-    <h2 class="text-lg font-normal text-slate-800">(Translations Spanish ⇔ English || English ⇔ Spanish ⇔ Spanish)</h2>
+  {
+    languaje ? (
+      <h2 class="text-lg font-normal text-slate-800">
+        (Translations Spanish ⇔ English || English ⇔ Spanish)
+      </h2>
     ) : (
-    <h2 class="text-lg font-normal text-slate-800">(Traducciones Español ⇔ Inglés || Inglés ⇔ Español)</h2>
-    )}
+      <h2 class="text-lg font-normal text-slate-800">
+        (Traducciones Español ⇔ Inglés || Inglés ⇔ Español)
+      </h2>
+    )
+  }
 </header>
 
 <ContactFom client:only="react" languaje={languaje} />

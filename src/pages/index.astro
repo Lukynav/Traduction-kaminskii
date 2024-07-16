@@ -1,35 +1,42 @@
 ---
 //@ts-ignore
-import { Spa } from "astro-spa";
-import Metadata from "../meta/Metadata.astro"
-import TopNavegation from "@components/topNavegation/TopNavegation.astro"
-import TopHeader from "@components/topHeader/TopHeader.astro";
-import PhraseCard from "@components/phraseCard/PhraseCard.astro";
-import Services from "@views/services/Services.astro";
-import Principles from "@views/PrinciplesAndValues/PrinciplesAndValues.astro";
-import Contact from "@views/Contact/Contact.astro";
-import Footer from "@views/Footer/Footer.astro";
+import { Spa } from 'astro-spa'
+import Metadata from '../meta/Metadata.astro'
+import TopNavegation from '@components/topNavegation/TopNavegation.astro'
+import TopHeader from '@components/topHeader/TopHeader.astro'
+import PhraseCard from '@components/phraseCard/PhraseCard.astro'
+import Services from '@views/services/Services.astro'
+import Principles from '@views/PrinciplesAndValues/PrinciplesAndValues.astro'
+import Contact from '@views/Contact/Contact.astro'
 //@ts-ignore
-import FlyContact from "@components/flyContact/FlyContact.astro";
+import FlyContact from '@components/flyContact/FlyContact.astro'
+import { Review } from '@views/Reviews/Review'
+import { Footer } from '@views/Footer/Footer'
 ---
 
 <html lang="en">
-  
   <head>
     <Metadata />
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG2BK7ZS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WG2BK7ZS"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    ><!-- End Google Tag Manager (noscript) -->
     <TopNavegation />
     <TopHeader />
     <PhraseCard />
     <Services />
     <Principles />
+    <Review client:only="react" />
     <Contact />
-    <Footer />
+    <Footer client:only="react" language={'spanish'} />
     <Spa />
     <FlyContact />
   </body>
-
 </html>
