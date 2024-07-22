@@ -16,6 +16,26 @@ import { Footer } from '@views/Footer/Footer'
 
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WG2BK7ZS"></script>
+    <script>
+      ;(function (w, d, s, l, i) {
+        //@ts-ignore
+        w[l] = w[l] || []
+        //@ts-ignore
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+          //@ts-ignore
+        j.async = true
+        //@ts-ignore
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        //@ts-ignore
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-WG2BK7ZS')
+    </script>
+    <!-- End Google Tag Manager -->
     <Metadata />
   </head>
 
@@ -33,7 +53,7 @@ import { Footer } from '@views/Footer/Footer'
     <PhraseCard />
     <Services />
     <Principles />
-    <Review client:only="react" />
+    <Review client:only="react" lenguage={'spanish'} />
     <Contact />
     <Footer client:only="react" language={'spanish'} />
     <Spa />

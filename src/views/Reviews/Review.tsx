@@ -2,14 +2,14 @@ import { useState, type Dispatch } from 'react'
 import StarRating from './Rating'
 import { reviews, type IReview } from './reviewList'
 
-export const Review = () => {
+export const Review = ({lenguage}: {lenguage: "spanish" | "english"}) => {
   const [showModal, setShowModal] = useState(false)
   const reviewListShort = reviews.slice(0, 3)
   return (
     <div className="w-full py-8 bg-sky-100 mt-6">
       <header className="w-full flex items-center gap-2 pl-4 max-w-3xl m-auto mb-8">
         <div className="w-10 h-1 bg-slate-800 rounded-sm"></div>
-        <h2 className="text-xl font-bold">Opiniones y testimononios</h2>
+        <h2 className="text-xl font-bold">{lenguage === "spanish" ? "Opiniones y testimonios" :"Opinions and comments"}</h2>
       </header>
       <section className="w-full lg:pl-4 flex flex-col p-4 lg:flex-row items-center gap-2 max-w-6xl m-auto">
         {reviewListShort.map((el) => {
@@ -19,12 +19,12 @@ export const Review = () => {
       <div className="w-full pr-6 lg:pl-4 flex items-center gap-2 max-w-6xl m-auto mt-4 lg:mt-9">
         <div className="w-full flex justify-end">
           <button className="underline" onClick={() => setShowModal(true)}>
-            Ver todos los testimonios
+            {lenguage === "spanish" ? "Ver todos los testimonios" : "See all comments"}
           </button>
         </div>
       </div>
       {showModal && (
-        <CommentList comments={reviews} setShowModal={setShowModal} />
+        <CommentList comments={reviews} setShowModal={setShowModal} lenguage={lenguage} />
       )}
     </div>
   )
@@ -51,10 +51,12 @@ const ReviewElement = ({ data }: { data: IReview }) => {
 
 const CommentList = ({
   comments,
-  setShowModal
+  setShowModal,
+  lenguage
 }: {
   comments: IReview[]
-  setShowModal: Dispatch<boolean>
+  setShowModal: Dispatch<boolean>,
+  lenguage: string
 }) => {
   return (
     <div className="fixed top-0 left-0 bg-slate-100/90 flex justify-center items-center w-screen h-screen z-10">
@@ -80,11 +82,11 @@ const CommentList = ({
         </button>
         <div className="w-full lg:max-w-3xl shadow-sky-300/10 border-2 border-sky-100 p-4 h-screen lg:max-h-[650px] flex bg-slate-50 shadow-2xl rounded-lg flex-col gap-4">
           <strong className="mb-2 mt-2 font-extrabold text-xl">
-            Todas las opiniones
+            {lenguage === "spanish" ? "Todas las opiniones" : "All comments"}
           </strong>
           <section className="overflow-scroll">
             {comments.map((data, index) => (
-              <article className="w-full bg-white-50 p-2 rounded-md border-b-2 border-slate-200">
+              <article key={index} className="w-full bg-white-50 p-2 rounded-md border-b-2 border-slate-200">
                 <header className="flex gap-4 h-14 items-center">
                   <img
                     className="w-14 h-14 rounded-full bg-cover"

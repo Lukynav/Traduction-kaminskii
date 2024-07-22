@@ -11,10 +11,31 @@ import Contact from '@views/Contact/Contact.astro'
 //@ts-ignore
 import FlyContact from '@components/flyContact/FlyContact.astro'
 import { Footer } from '@views/Footer/Footer'
+import { Review } from '@views/Reviews/Review'
 ---
 
 <html lang="en">
   <head>
+     <!-- Google Tag Manager -->
+     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WG2BK7ZS"></script>
+     <script>
+       ;(function (w, d, s, l, i) {
+         //@ts-ignore
+         w[l] = w[l] || []
+         //@ts-ignore
+         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+         var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : ''
+           //@ts-ignore
+         j.async = true
+         //@ts-ignore
+         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+         //@ts-ignore
+         f.parentNode.insertBefore(j, f)
+       })(window, document, 'script', 'dataLayer', 'GTM-WG2BK7ZS')
+     </script>
+     <!-- End Google Tag Manager -->
     <Metadata />
   </head>
 
@@ -32,8 +53,9 @@ import { Footer } from '@views/Footer/Footer'
     <PhraseCard languaje="english" />
     <Services languaje="english" />
     <Principles languaje="english" />
+    <Review client:only="react" lenguage={'english'} />
     <Contact languaje="english" />
-    <Footer client:only="react" language={'spanish'} />
+    <Footer client:only="react" language={'english'} />
     <FlyContact />
     <Spa />
   </body>
