@@ -6,7 +6,7 @@ export const Review = ({lenguage}: {lenguage: "spanish" | "english"}) => {
   const [showModal, setShowModal] = useState(false)
   const reviewListShort = reviews.slice(0, 3)
   return (
-    <div className="w-full py-8 bg-sky-100 mt-6">
+    <div className="w-full py-8 bg-sky-100 mt-6" id="opiniones">
       <header className="w-full flex items-center gap-2 pl-4 max-w-3xl m-auto mb-8">
         <div className="w-10 h-1 bg-slate-800 rounded-sm"></div>
         <h2 className="text-xl font-bold">{lenguage === "spanish" ? "Opiniones y testimonios" :"Opinions and comments"}</h2>
